@@ -6,15 +6,6 @@
 # # В ответе напишите “Парам пам-пам”, если с ритмом все в порядке и “Пам парам”, если с ритмом все не в порядке
 
 equally = True
-vowel = list('а у о ы и э я ю ё е'.split())
-# Функция определения суммы гласных во фразе
-def separator(x):
-    summ = 0
-    for i in x:
-        for n in vowel:
-            if i == n:
-                summ += 1
-    return summ
 
 # Функция сравнения числа гласных во фразах
 def equal(result, equally):
@@ -26,7 +17,7 @@ def equal(result, equally):
     else:
         return "Парам пам-пам"
 
-result = equal(list(map(int, map(lambda x: (separator(x)), map(str,input().split())))), equally)
+result = equal(list(map(int, map(lambda x: (sum([1 for i in x if i in 'ауоыиэяюёе'])), map(str,input().split())))), equally)
 print(result)
 
 # Задача 36: Напишите функцию print_operation_table(operation, num_rows=6, num_columns=6), которая принимает в качестве аргумента функцию, 
