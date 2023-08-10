@@ -18,14 +18,14 @@ print('Создать новый файл или открыть старый?')
 print('new - новый, иначе - открыть')
 
 create = input()
-
+file = 'phone.txt'
 if create == 'new':
     all = {}
-    with open('phone.txt', 'w', encoding='UTF-8') as file:
-        file.write(str(all))
+    with open(file, 'w', encoding='UTF-8') as files:
+        files.write(str(all))
     print('Введите help() для справки')
 else:
-    with open('phone.txt', 'r', encoding='UTF-8') as files: 
+    with open(file, 'r', encoding='UTF-8') as files: 
         all = ast.literal_eval(files.read())
     print('Введите help() для справки')
 
