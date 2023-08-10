@@ -1,33 +1,58 @@
+import ast
 # Задача 38: Дополнить телефонный справочник возможностью изменения и удаления данных. 
 # Пользователь также может ввести имя или фамилию, и Вы должны реализовать функционал для изменения и удаления данных
 
-print('out() - вывод всего справочника')
-print('out_name("Name") - поиск по имени')
-print('delete("Name") - удалить номер')
-print('add("Name", Number) - добавить/изменить номер')
+# {имя: [телефон, комментарий]}
+# phone.txt
 
-dict_number = {'Иванов':111, 'Петров':333, 'Сидоров':666}
+def help():
+    print('create() - очистить справочник')
+    print('out() - вывод всего справочника')
+    print('out_name("Name") - поиск по имени')
+    print('delete("Name") - удалить номер')
+    print('add("Name", "number", "comment")) - добавить/изменить номер')
+    print('save() - сохранить и выйти')
+    inp()
 
-def out(TD = dict_number):
-    for i in TD:
-        print(i, ' - ', TD[i])
+print('Создать новый файл или открыть старый?')
+print('new - новый, иначе - открыть')
+
+create = input()
+
+if create == 'new':
+    all = {}
+    with open('phone.txt', 'w', encoding='UTF-8') as file:
+        file.write(str(all))
+    print('Введите help() для справки')
+else:
+    with open('phone.txt', 'r', encoding='UTF-8') as files: 
+        all = ast.literal_eval(files.read())
+    print('Введите help() для справки')
+
+def inp ():
     eval(input())
 
-def out_name(name, dn = dict_number):
-    print(dn[name])
-    eval(input())
-    
-def delete(name, dn = dict_number):
-    del dn[name]
-    print('Удалено')
-    eval(input())
+def out(all = all): 
+    for i in all:
+        print('Имя: ', i, ' Номер: ', all[i][0], ' Комментарий: ', all[i][1])
+    inp()
 
-def add(name, number):
-    print('Добавлено или изменено')
-    dict_number[name] = number
-    eval(input())
+def out_name(name, all = all):
+    print('Поиск по имени:', name,  ' Номер:', all[name][0], ' Комментарий:', all[name][1])
+    inp()
 
-def stop():
-    print('Выход')
+def delete(name):
+    del all[name]
+    print('Удален номер ', name)
+    inp()
 
-eval(input())
+def add(name, numm, comm, all = all):
+    all[name] = [numm, comm]
+    inp()
+
+def save(all = all):
+    with open('phone.txt', 'w', encoding='UTF-8') as files: 
+        files.write(str(all))
+    print('Сохранено')
+
+inp()
