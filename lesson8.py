@@ -8,7 +8,7 @@ import ast
 def help():
     print('create() - очистить справочник')
     print('out() - вывод всего справочника')
-    print('out_name("Name") - поиск по имени')
+    print('search("Name") - поиск по имени')
     print('delete("Name") - удалить номер')
     print('add("Name", "number", "comment")) - добавить/изменить номер')
     print('save() - сохранить и выйти')
@@ -37,7 +37,7 @@ def out(all = all):
         print('Имя: ', i, ' Номер: ', all[i][0], ' Комментарий: ', all[i][1])
     inp()
 
-def out_name(name, all = all):
+def search(name, all = all):
     print('Поиск по имени:', name,  ' Номер:', all[name][0], ' Комментарий:', all[name][1])
     inp()
 
