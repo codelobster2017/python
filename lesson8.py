@@ -6,7 +6,6 @@ import ast
 # phone.txt
 
 def help():
-    print('create() - очистить справочник')
     print('out() - вывод всего справочника')
     print('search("Name") - поиск по имени')
     print('delete("Name") - удалить номер')
